@@ -4,7 +4,9 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, Con
 from telegram import Update
 from scheduler import start_scheduler
 
-bot_token = "7669197497:AAHiQL6KJbD2Y093YN2GqrLKJV1p3j5qWi4"
+bot_token = "8034335353:AAEOoEY-G3di-swr-UqX9BREv_cKoyVNKm0" 
+key ="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"   
+
 
 def save_message(user_id, username, text):
     filename = "messages.json"

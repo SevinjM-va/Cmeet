@@ -1,4 +1,3 @@
-# summarizer.py
 import requests
 
 def summarize_messages(messages: list[str], api_key: str) -> str:
@@ -14,7 +13,7 @@ def summarize_messages(messages: list[str], api_key: str) -> str:
     }
 
     data = {
-        "model": "deepseek",
+        "model": "deepseek/deepseek-r1-0528:free",
         "messages": [
             {
                 "role": "user",
@@ -22,8 +21,10 @@ def summarize_messages(messages: list[str], api_key: str) -> str:
             }
         ]
     }
-
-    response = requests.post(url, json=data, headers=headers)
-    response.raise_for_status()
-    result = response.json()
-    return result["choices"][0]["message"]["content"]
+    try:
+        response = requests.post(url, json=data, headers=headers)
+        response.raise_for_status()
+        result = response.json()
+        return result["choices"][0]["message"]["content"]
+    except Exception as e:
+        return f"Ошибка при запросе к OpenRouter API: {e}"
